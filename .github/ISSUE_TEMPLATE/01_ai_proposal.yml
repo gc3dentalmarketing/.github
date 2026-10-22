@@ -1,0 +1,104 @@
+name: 業務のAI化提案
+description: 自動化したい業務を起票する
+title: "[AI化] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        日々の「この作業を減らしたい」を起票するテンプレートです。
+        書き方に迷ったら [記入ガイド](https://github.com/gc3dentalmarketing/.github/blob/main/%E8%A8%98%E5%85%A5%E3%82%AC%E3%82%A4%E3%83%89.md) を見てください。
+        **このリポジトリは公開されています。** 医院名・患者情報・売上などの数値・ログイン情報は書かないでください（「A医院」のように伏せてください）。
+
+  - type: textarea
+    id: target
+    attributes:
+      label: 対象の業務
+      description: いつ・誰が・どれくらいの頻度でやっているか
+      placeholder: 例）毎月初に、担当者が全医院分のMEO投稿の実績を管理画面から案件管理表へ転記している
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: 今どうやっているか
+      description: 手順をざっくり。使っている画面・シート・ツール名も書いてください
+      placeholder: |
+        1. Googleビジネスプロフィールの管理画面を開く
+        2. 医院ごとに投稿数と閲覧数を確認する
+        3. 案件管理表（スプレッドシート）に手入力する
+    validations:
+      required: true
+
+  - type: input
+    id: effort
+    attributes:
+      label: 月あたりの工数（概算）
+      description: 優先順位づけに使います。「1件◯分 × 月◯件」の形で
+      placeholder: 例）1件15分 × 月40件 ＝ 月10時間
+    validations:
+      required: true
+
+  - type: dropdown
+    id: judgement
+    attributes:
+      label: 判断の要否
+      description: 自動化しやすさの最大の分かれ目です
+      options:
+        - 手順が決まっている（誰がやっても同じ結果）
+        - 一部に判断がいる（ルールにできそう）
+        - 判断が中心（経験や感覚に頼っている）
+    validations:
+      required: true
+
+  - type: textarea
+    id: io
+    attributes:
+      label: 入力と出力
+      description: データがどこから来て、どこへ行くか。紙や口頭、Chatworkでのやり取りが挟まる場合はそれも書いてください
+      placeholder: |
+        入力：Googleビジネスプロフィールの管理画面
+        出力：案件管理表（スプレッドシート）→ 医院へ月次レポートで共有
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: pain
+    attributes:
+      label: 困っていること（複数可）
+      options:
+        - label: 時間がかかる
+        - label: ミスが起きる・見落とす
+        - label: 特定の人しかできない（属人化）
+        - label: 気力を使う・やりたくない
+
+  - type: dropdown
+    id: risk
+    attributes:
+      label: 間違えたときの影響
+      options:
+        - チーム内で気づける
+        - 医院に出す前に止められる
+        - 医院や患者さんの目に触れる（公開中のHP・投稿・広告など）
+    validations:
+      required: true
+
+  - type: textarea
+    id: success
+    attributes:
+      label: どうなったら成功か
+      description: 完成後に何を見て「できた」と判断するか。誰が確認するかも書いてください
+      placeholder: 例）転記が自動で終わり、担当者が目視で確認するだけで済む。確認は月初に担当者が行う
+
+  - type: textarea
+    id: existing
+    attributes:
+      label: 既存の仕組み・過去の試み
+      description: すでにあるツールやテンプレート、過去に自動化を試してうまくいかなかった経緯（あれば理由も）
+
+  - type: textarea
+    id: references
+    attributes:
+      label: 参考資料
+      description: 手順書・画面キャプチャ・対象シートのリンクなど。画像は医院名や患者情報が写らないようにしてください
