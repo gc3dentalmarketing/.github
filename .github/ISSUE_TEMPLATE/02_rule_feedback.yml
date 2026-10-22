@@ -1,0 +1,80 @@
+name: ルール・判定基準への指摘
+description: JARVIS の判定がおかしい・視点を追加してほしい
+title: "[判定] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        JARVIS の判定やチェック結果に「それは違う」「この視点も入れてほしい」と感じたときのテンプレートです。
+        書き方に迷ったら [記入ガイド](https://github.com/gc3dentalmarketing/.github/blob/main/%E8%A8%98%E5%85%A5%E3%82%AC%E3%82%A4%E3%83%89.md) を見てください。
+        **このリポジトリは公開されています。** 原稿を貼るときは医院名・院長名・地名を伏せ、患者情報やログイン情報は書かないでください。
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: 対象の機能・ルール
+      options:
+        - 医療広告の表現チェック
+        - 原稿・ブログ・投稿の点検
+        - SEO・MEOの分析・提案
+        - 医院情報・記憶の内容
+        - その他
+    validations:
+      required: true
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 指摘の種類
+      options:
+        - 判定が間違っている（誤検知・見逃し）
+        - 判定の根拠が違う・古い
+        - 新しい視点・基準を追加してほしい
+        - 言い回し・出力の形を変えてほしい
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: 対象の文章・入力
+      description: JARVIS に渡した文章や依頼。必要な部分だけ抜き出してください
+      placeholder: 例）ブログ題名「痛みに徹底配慮した完全個室の診療」
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: JARVIS の判定
+      description: JARVIS が何と答えたか
+      placeholder: 例）問題なしと判定された
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 本来どう判定すべきか・その理由
+      placeholder: 例）「徹底配慮」は裏付けが必要な表現として指摘すべき。「完全個室」も実態の確認が要る
+    validations:
+      required: true
+
+  - type: textarea
+    id: basis
+    attributes:
+      label: 根拠
+      description: 医療広告ガイドライン・Q&A・事例解説書の該当箇所、医院や行政からの指摘など。分かる範囲で
+      placeholder: 例）医療広告ガイドラインの「誇大な広告」の項、Q&Aの該当する問
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 急ぎ度
+      options:
+        - 急ぎ（公開前の原稿に関わる）
+        - 通常
+        - いつでもよい
+      default: 1
+    validations:
+      required: true
